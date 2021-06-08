@@ -1,4 +1,4 @@
-# RESTful-CRUD-Node-Server
+# GraphQL
 
 ## For this project, you will built a set of REST APIs using Node and ExpressJS.  You will decide upon some sort of "product" for your API which will allow users to Create, Read, Update, and Delete (CRUD) your items.  Your server will implement the following items:
 

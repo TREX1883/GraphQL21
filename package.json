@@ -1,0 +1,31 @@
+{
+  "name": "restful-crud-node-server",
+  "version": "1.0.0",
+  "description": "RESTful-CRUD",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TREX1883/RESTful-CRUD-Node-Server.git"
+  },
+  "author": "Daniel Purrington",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TREX1883/RESTful-CRUD-Node-Server/issues"
+  },
+  "homepage": "https://github.com/TREX1883/RESTful-CRUD-Node-Server#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.3",
+    "mongoose": "^5.12.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

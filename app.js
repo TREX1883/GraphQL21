@@ -5,6 +5,10 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const graphqlHttp = require('express-graphql');
+
+const graphqlSchema = require('graphql/schema');
+const graphqlResolver = require('graphql/resolvers');
 
 const errorController = require('./controllers/error');
 // const User = require('./models/user');
@@ -16,6 +20,13 @@ app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(
+  '/graphgl', 
+  graphqlHttp({
+  schema: graphqlSchema,
+  rootValue: graphqlResolver
+}));
 
 app.use(errorController.get404);
 

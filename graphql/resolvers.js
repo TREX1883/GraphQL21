@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
     hello() {
         return {
             text: 'Hello World!',

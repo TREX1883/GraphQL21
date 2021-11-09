@@ -5,10 +5,11 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const graphqlHttp = require('express-graphql');
 
-const graphqlSchema = require('graphql/schema');
-const graphqlResolver = require('graphql/resolvers');
+const { graphqlHTTP } = require('express-graphql');
+
+const graphqlSchema = require('./graphql/schema');
+const graphqlResolver = require('./graphql/resolvers');
 
 const errorController = require('./controllers/error');
 // const User = require('./models/user');
@@ -17,13 +18,13 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
-
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
-  '/graphgl', 
-  graphqlHttp({
+  '/graphql', 
+  graphqlHTTP({
   schema: graphqlSchema,
   rootValue: graphqlResolver
 }));
@@ -47,4 +48,4 @@ mongoose
     })
   })
   .catch(err => console.log(err))
-// 1-27-20 1.00:59 ? 
+// 1-27-20 1.00:59 ? npm run start

@@ -1,36 +1,49 @@
-const { buildSchema } = require('graphql');
+const User = require('../models/user');
 
-module.exports = buildSchema(`
-    type Post {
-        _id: ID!
-        title: String!
-        content: String!
-        imageUrl: String!
-        creator: User!
-        createdAt: String!
-        updatedAt: String!
+module.exports = {
+    createUser: async function({ userInput }, req) {
+        // const email = args.userInput.email;
+        const existingUser = await User.findOne({email: userInput.email});
+        if (existingUser) {
+            const error = new Error('User exists already!');
+        }
     }
+};
+// 423, 3:47
 
-    type User {
-        _id: ID!
-        name: String!
-        email: String!
-        password: String  
-        status: String!
-        posts: [Post!]!
-    }
+// const { buildSchema } = require('graphql');
 
-    input UserInputData {
-        email: String!
-        name: String!
-        password: String!
-    }
+// module.exports = buildSchema(`
+//     type Post {
+//         _id: ID!
+//         title: String!
+//         content: String!
+//         imageUrl: String!
+//         creator: User!
+//         createdAt: String!
+//         updatedAt: String!
+//     }
 
-    type RootMutation {
-        createUser(userInput: UserInputData): User!
-    }
+//     type User {
+//         _id: ID!
+//         name: String!
+//         email: String!
+//         password: String  
+//         status: String!
+//         posts: [Post!]!
+//     }
 
-    schema {
-        mutation: RootMutation
-    }
-`);
+//     input UserInputData {
+//         email: String!
+//         name: String!
+//         password: String!
+//     }
+
+//     type RootMutation {
+//         createUser(userInput: UserInputData): User!
+//     }
+
+//     schema {
+//         mutation: RootMutation
+//     }
+// `);
